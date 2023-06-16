@@ -17,9 +17,17 @@ app.get('/',async (req,res) => {
     res.render('index', {shortUrls : shortUrls})
 })
 app.post('/shortUrls', async (req,res) => {
-    await ShortUrl.create({
-        full : req.body.fullUrl
-    }) 
+    // preventing duplication of URLs
+    const shortUrl = await ShortUrl.findOne({full : req.body.fullUrl})
+    if(shortUrl == null){
+        await ShortUrl.create({
+            full : req.body.fullUrl
+        })   
+    }
+    else{
+        shortUrl.clicks++;
+        shortUrl.save();
+    }
     res.redirect('/')
 })
 app.get('/:shortUrl' , async (req,res) => {
