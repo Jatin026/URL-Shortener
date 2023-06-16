@@ -18,6 +18,7 @@ app.get('/',async (req,res) => {
 })
 app.post('/shortUrls', async (req,res) => {
     // preventing duplication of URLs
+    
     const shortUrl = await ShortUrl.findOne({full : req.body.fullUrl})
     if(shortUrl == null){
         await ShortUrl.create({
@@ -25,8 +26,9 @@ app.post('/shortUrls', async (req,res) => {
         })   
     }
     else{
+        // await ShortUrl.deleteOne({full:req.body.fullUrl})
         shortUrl.clicks++;
-        shortUrl.save();
+        shortUrl.save()
     }
     res.redirect('/')
 })
