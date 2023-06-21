@@ -8,4 +8,4 @@ npm i package.json
 ```bash
 npm start
 ```
-![](./example.png)
+![](/example.png)
