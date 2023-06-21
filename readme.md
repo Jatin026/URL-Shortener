@@ -8,4 +8,4 @@ npm i package.json
 ```bash
 npm start
 ```
-![](/example.png)
+![example](https://github.com/Jatin026/URL-Shortener/assets/94392370/081f1599-654c-44ea-b321-de42090f0b97)
